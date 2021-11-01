@@ -28,7 +28,7 @@ function Home() {
         alignItems: 'center',
       }}>
       <SliderBox images={moviesImages} />
-      <Text>What</Text>
+      {/* <Text>What</Text> */}
     </View>
   );
 }

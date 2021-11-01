@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-const apiUrl = "https://api.themoviedb.org/3";
-const apiKey = "api_key=8c247ea0b4b56ed2ff7d41c9a833aa77";
+const apiUrl = 'https://api.themoviedb.org/3';
+const apiKey = 'api_key=8c247ea0b4b56ed2ff7d41c9a833aa77';
 // const apiKey = 'api_key=fd11bc4c510ce3b777704b1648bd4234';
 
 // Get Popular Movies
