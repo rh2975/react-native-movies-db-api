@@ -8,13 +8,15 @@ import {
 } from '../shared/moviesdata';
 
 function Home() {
-  const [moviesImages, setMoviesImages] = React.useState('');
+  const [moviesImages, setMoviesImages] = React.useState();
 
   React.useEffect(() => {
     const moviesImagesArray = [];
+    // console.log('POPULAR MOVIES HERE: ' + JSON.stringify(popularMovies.results[0]));
+    // console.log('POPULAR MOVIES Poster path HERE: ' + 'https://image.tmdb.org/t/p/w500' + popularMovies.results[0].poster_path);
     popularMovies.results.forEach(movie => {
       moviesImagesArray.push(
-        'https://image.tmdb.org/t/p/w500' + movie.poster_path,
+        'https://image.tmdb.org/t/p/w500' + movie.poster_path
       );
     });
     setMoviesImages(moviesImagesArray);
