@@ -71,6 +71,29 @@ const Home = () => {
       });
   }, []);
 
+  // // is equivalent to...
+  // useEffect(() => {
+  //   getUpcomingMovies()
+  //     .then(movies => {
+  //       const moviesImagesArray = [];
+  //       movies.forEach(movie => {
+  //         moviesImagesArray.push(
+  //           'https://image.tmdb.org/t/p/w500' + movie.poster_path,
+  //         );
+  //       });
+  //       setMoviesImages(moviesImagesArray);
+  //     }).catch(() => {
+  //       setError(true);
+  //     });
+  //   getPopularMovies()
+  //     .then(movies => {
+  //       setPopularMovies(movies);
+  //     })
+  //     .catch(() => {
+  //       setError(true);
+  //     });
+  // }, []);
+
   return (
     <react.Fragment>
       {/* Upcoming Movies */}
