@@ -10,7 +10,7 @@ const App = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Home></Home>
+      <Home />
     </View>
   );
 };
