@@ -7,19 +7,23 @@ import {
   ActivityIndicator,
   Text,
   View,
+  Modal,
 } from 'react-native';
+import PlayButton from '../components/PlayButton';
 import StarRating from 'react-native-star-rating';
 import {getMovie} from '../services/services';
 import dateFormat from 'dateformat';
+import Video from '../components/Video';
 
 const placeholderImage = require('../assets/images/placeholder.png');
 const height = Dimensions.get('screen').height;
 
-const Detail = () => {
-  const movieId = 1;
+const Detail = ({route, navigation}) => {
+  const movieId = route.params.movieId;
 
   const [movieDetail, setMovieDetail] = useState();
   const [loaded, setLoaded] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     getMovie(movieId).then(movieData => {
@@ -27,6 +31,10 @@ const Detail = () => {
       setLoaded(true);
     });
   }, [movieId]);
+
+  const videoShown = () => {
+    setModalVisible(!modalVisible);
+  };
 
   return (
     <React.Fragment>
@@ -47,6 +55,9 @@ const Detail = () => {
               }
             />
             <View style={styles.container}>
+              <View style={styles.playButton}>
+                <PlayButton handlePress={videoShown} />
+              </View>
               <Text style={styles.movieTitle}>{movieDetail.title}</Text>
               {movieDetail.genres && (
                 <View style={styles.genresContainer}>
@@ -74,6 +85,14 @@ const Detail = () => {
               </Text>
             </View>
           </ScrollView>
+          <Modal
+            supportedOrientations={['portrait', 'landscape']}
+            animationType="slide"
+            visible={modalVisible}>
+            <View style={styles.videoModal}>
+              <Video onClose={videoShown} />
+            </View>
+          </Modal>
         </View>
       )}
       {!loaded && <ActivityIndicator size="large" />}
@@ -111,6 +130,11 @@ const styles = StyleSheet.create({
   },
   release: {
     fontWeight: 'bold',
+  },
+  playButton: {
+    position: 'absolute',
+    top: -25,
+    right: 20,
   },
   videoModal: {
     flex: 1,
