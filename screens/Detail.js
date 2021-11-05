@@ -7,13 +7,14 @@ import {
   ActivityIndicator,
   Text,
   View,
-  Modal,
+  // Modal,
+  // Pressable,
 } from 'react-native';
 import PlayButton from '../components/PlayButton';
 import StarRating from 'react-native-star-rating';
 import {getMovie} from '../services/services';
 import dateFormat from 'dateformat';
-import Video from '../components/Video';
+// import Video from '../components/Video';
 
 const placeholderImage = require('../assets/images/placeholder.png');
 const height = Dimensions.get('screen').height;
@@ -23,7 +24,7 @@ const Detail = ({route, navigation}) => {
 
   const [movieDetail, setMovieDetail] = useState();
   const [loaded, setLoaded] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     getMovie(movieId).then(movieData => {
@@ -32,9 +33,9 @@ const Detail = ({route, navigation}) => {
     });
   }, [movieId]);
 
-  const videoShown = () => {
-    setModalVisible(!modalVisible);
-  };
+  // const videoShown = () => {
+  //   setModalVisible(!modalVisible);
+  // };
 
   return (
     <React.Fragment>
@@ -56,7 +57,8 @@ const Detail = ({route, navigation}) => {
             />
             <View style={styles.container}>
               <View style={styles.playButton}>
-                <PlayButton handlePress={videoShown} />
+                {/* <PlayButton handlePress={videoShown} /> */}
+                <PlayButton />
               </View>
               <Text style={styles.movieTitle}>{movieDetail.title}</Text>
               {movieDetail.genres && (
@@ -85,14 +87,14 @@ const Detail = ({route, navigation}) => {
               </Text>
             </View>
           </ScrollView>
-          <Modal
+          {/* <Modal
             supportedOrientations={['portrait', 'landscape']}
             animationType="slide"
             visible={modalVisible}>
             <View style={styles.videoModal}>
               <Video onClose={videoShown} />
             </View>
-          </Modal>
+          </Modal> */}
         </View>
       )}
       {!loaded && <ActivityIndicator size="large" />}
