@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 // import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import Detail from '../screens/Detail';
+import Search from '../screens/Search';
 import Navbar from './Navbar';
 
 const Stack = createStackNavigator();
@@ -26,6 +27,16 @@ class MainNavigation extends React.PureComponent {
         <Stack.Screen
           name="Detail"
           component={Detail}
+          options={{
+            headerTransparent: true,
+            header: ({navigation}) => (
+              <Navbar main={false} navigation={navigation} />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="Search"
+          component={Search}
           options={{
             headerTransparent: true,
             header: ({navigation}) => (
