@@ -63,7 +63,7 @@ const Search = ({navigation}) => {
           )}
 
           {/* When searched but no results */}
-          {searchResults && searchResults.length == 0 && (
+          {searchResults && searchResults.length === 0 && (
             <View style={styles.noResults}>
               <Text>No results matching your criteria.</Text>
               <Text>Try different keywords.</Text>
